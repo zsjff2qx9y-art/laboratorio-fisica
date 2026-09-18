@@ -11607,7 +11607,7 @@ function renderExperiment(topicId){
     el('label',{},['Eixo X', selX]),
     el('label',{},['Eixo Y', selY])
   ]);
-  const graphCanvas=el('canvas',{});
+  const graphCanvas=el('canvas',{role:'img','aria-label':'Gráfico de dispersão dos dados medidos, com reta de regressão'});
   const graphWrap=el('div',{class:'exp-graph-wrap'},[graphCanvas]);
   const fitReadout=el('div',{class:'exp-fit-readout'});
   stack.appendChild(el('div',{class:'panel'},[
@@ -12443,7 +12443,7 @@ function renderLabLivre(topicId){
   // ---- 9. Análise gráfica personalizável ----
   const selX=el('select',{}), selY=el('select',{});
   const axisRow=el('div',{class:'axis-select-row'},[el('label',{},['Eixo X', selX]), el('label',{},['Eixo Y', selY])]);
-  const graphCanvas=el('canvas',{});
+  const graphCanvas=el('canvas',{role:'img','aria-label':'Gráfico de dispersão dos dados medidos, com reta de regressão'});
   const graphWrap=el('div',{class:'exp-graph-wrap'},[graphCanvas]);
   const fitReadout=el('div',{class:'exp-fit-readout'});
   const analiseGraficaPanel=el('div',{class:'panel'},[el('p',{class:'panel-title'},['Análise Gráfica Personalizável']), axisRow, graphWrap, fitReadout]);
@@ -12511,7 +12511,7 @@ function renderLabLivre(topicId){
     const preset=LIVRE_PRESETS[presetId];
     const keys=Object.keys(preset.graphValues(state)).filter(function(k){ return k!=='t'; });
     keys.forEach(function(k){
-      const c=el('canvas',{}); const box=el('div',{class:'graph-box'},[c]);
+      const c=el('canvas',{role:'img','aria-label':'Gráfico de '+k+' ao longo do tempo'}); const box=el('div',{class:'graph-box'},[c]);
       graphsGrid.appendChild(box);
       miniGraphs[k]=createMiniGraph(c, box, cssVar('--cyan'), k, '');
     });
@@ -13762,7 +13762,7 @@ function showTopic(topicId){
   const miniGraphs={};
   const graphBoxes=[];
   topic.graphs.forEach(function(g){
-    const c=el('canvas',{});
+    const c=el('canvas',{role:'img','aria-label':'Gráfico de '+g.label+' ao longo do tempo'});
     const box=el('div',{class:'graph-box'},[c]);
     graphsGrid.appendChild(box);
     graphBoxes.push(box);
